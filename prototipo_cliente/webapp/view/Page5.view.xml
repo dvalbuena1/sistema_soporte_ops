@@ -1,0 +1,33 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.cliente.controller.Page5" xmlns="sap.m" xmlns:layout1="sap.ui.commons.layout">
+    <Page showHeader="true" title="Historial de Mensajes" showFooter="false" showNavButton="true" enableScrolling="false" navButtonPress="_onPageNavButtonPress">
+        <content>
+            <layout1:AbsoluteLayout horizontalScrolling="Hidden" verticalScrolling="Auto">
+                <layout1:positions>
+                    <layout1:PositionContainer left="0px" top="0px">
+                        <layout1:control>
+                            <List width="1237.609375px" growing="false" growingThreshold="20" growingScrollToLoad="false" backgroundDesign="Solid" class="sapUiSmallMargin" items="{path:'/MensajeSet', templateShareable:true}">
+                                <items>
+                                    <FeedListItem icon="" sender="{Autor}" text="{Mensaje}" info="" timestamp="{path: 'Fecha', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}"/>
+                                </items>
+                            </List>
+                        </layout1:control>
+                    </layout1:PositionContainer>
+                </layout1:positions>
+            </layout1:AbsoluteLayout>
+        </content>
+        <footer>
+            <OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+                <content>
+                    <ToolbarSpacer width=""/>
+                    <Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                </content>
+            </OverflowToolbar>
+        </footer>
+        <headerContent>
+            <Button text="Enviar Mensaje" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+        </headerContent>
+        <subHeader/>
+        <customHeader/>
+    </Page>
+</mvc:View>

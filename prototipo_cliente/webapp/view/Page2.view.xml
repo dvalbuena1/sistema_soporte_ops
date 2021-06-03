@@ -1,0 +1,106 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.standard.cliente.controller.Page2" xmlns:uxap="sap.uxap" xmlns="sap.m" xmlns:layout="sap.ui.layout">
+    <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="false" class="sapUiSizeCompact">
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader objectTitle="Solicitud #" objectSubtitle="{ID}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="true" objectImageURI="/build/uilibraries/content/static/image-canvas.svg">
+                <uxap:navigationBar>
+                    <Bar>
+                        <contentLeft>
+                            <Button type="Back" press="_onFioriObjectPageHeaderPress"/>
+                        </contentLeft>
+                        <contentMiddle>
+                            <Title text=""/>
+                        </contentMiddle>
+                        <contentRight/>
+                    </Bar>
+                </uxap:navigationBar>
+                <uxap:actions>
+                    <Button text="Editar" iconFirst="false" type="Emphasized" enabled="true">
+                        <layoutData>
+                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                        </layoutData>
+                    </Button>
+                    <Button text="Eliminar" iconFirst="false" type="Transparent" enabled="true">
+                        <layoutData>
+                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                        </layoutData>
+                    </Button>
+                </uxap:actions>
+                <uxap:breadCrumbsLinks/>
+            </uxap:ObjectPageHeader>
+        </uxap:headerTitle>
+        <uxap:headerContent>
+            <VBox>
+                <items>
+                    <Title text="Asunto"/>
+                    <ObjectNumber number="{path:'Asunto', formatter:'.formatFractionDigitFromValue'}" unit="" state="None"/>
+                </items>
+            </VBox>
+            <VBox>
+                <items>
+                    <Title text="Estado"/>
+                    <ObjectNumber number="{path:'Estado', formatter:'.formatFractionDigitFromValue'}" unit="" state="{path:'EstadoCC', formatter:'.formatStateFromCriticality'}"/>
+                </items>
+            </VBox>
+            <VBox>
+                <items>
+                    <Title text="Prioridad"/>
+                    <ObjectNumber number="{path:'Prioridad', formatter:'.formatFractionDigitFromValue'}" unit="" state="None"/>
+                </items>
+            </VBox>
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection title="Descripción">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Descripción">
+                        <uxap:blocks>
+                            <Text text="{Descripcion}" width="auto" maxLines="10" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="Últimos mensajes">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Últimos mensajes">
+                        <uxap:blocks>
+                            <layout:BlockLayout background="Default" visible="true">
+                                <layout:content>
+                                    <layout:BlockLayoutRow scrollable="false">
+                                        <layout:content>
+                                            <layout:BlockLayoutCell width="1" title="" titleAlignment="Begin" titleLevel="Auto">
+                                                <layout:content>
+                                                    <List width="100%" growing="false" growingThreshold="20" growingScrollToLoad="false" backgroundDesign="Solid" items="{path:'Mensaje', templateShareable:true}">
+                                                        <items>
+                                                            <FeedListItem icon="sap-icon://person-placeholder" sender="{Autor}" text="{Mensaje}" info="" timestamp="{path: 'Fecha', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}"/>
+                                                        </items>
+                                                    </List>
+                                                </layout:content>
+                                            </layout:BlockLayoutCell>
+                                        </layout:content>
+                                    </layout:BlockLayoutRow>
+                                    <layout:BlockLayoutRow scrollable="false">
+                                        <layout:content>
+                                            <layout:BlockLayoutCell width="4" title="" titleAlignment="Begin" titleLevel="Auto">
+                                                <layout:content>
+                                                    <Button text="Ver Mensajes" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+                                                </layout:content>
+                                            </layout:BlockLayoutCell>
+                                        </layout:content>
+                                    </layout:BlockLayoutRow>
+                                </layout:content>
+                            </layout:BlockLayout>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+        <uxap:footer>
+            <OverflowToolbar design="auto">
+                <content>
+                    <ToolbarSpacer/>
+                    <Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                </content>
+            </OverflowToolbar>
+        </uxap:footer>
+    </uxap:ObjectPageLayout>
+</mvc:View>
